@@ -1,0 +1,13 @@
+http:
+  host: "localhost"
+  port: "8083"
+
+ibm:
+  S3:
+    host: ""
+    basePath: "/"
+    instanceId: ""
+  OAuth:
+    url: "https://iam.cloud.ibm.com/identity/token"
+    expiryTime: "3600"
+    apiKey: ""
