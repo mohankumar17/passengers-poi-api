@@ -8,11 +8,12 @@ class Config:
     HTTP_HOST = properties["http"]["host"]
     HTTP_PORT = properties["http"]["port"]
 
-    S3_HOST = properties["ibm"]["S3"]["host"]
-    S3_BASEPATH = properties["ibm"]["S3"]["basePath"]
-    S3_INSTANCEID = properties["ibm"]["S3"]["instanceId"]
-    S3_OAUTH = properties["ibm"]["S3"]["url"]
-    S3_APIKEY = properties["ibm"]["S3"]["apiKey"]
+    IBM_COS_HOST = properties["ibm"]["COS"]["host"]
+    IBM_COS_BASEPATH = properties["ibm"]["COS"]["basePath"]
+    IBM_COS_INSTANCEID = properties["ibm"]["COS"]["instanceId"]
+
+    IBM_OAUTH_URL = properties["ibm"]["OAuth"]["url"]
+    IBM_OAUTH_APIKEY = properties["ibm"]["OAuth"]["apiKey"]
 
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)

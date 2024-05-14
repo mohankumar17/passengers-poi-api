@@ -11,11 +11,11 @@ passengers_poi_bp = Blueprint('passengers_poi', __name__)
 logger = Config.logger
 
 # Routers
-@passengers_poi_bp.get("/api/passengers/fetch/<bucketName>/<fileName>/")
+@passengers_poi_bp.get("/api/fetch/<bucketName>/<fileName>/")
 def get_passenger_poi_route(bucketName, fileName):
     return get_passenger_poi(bucketName, fileName)
 
-@passengers_poi_bp.put("/api/passengers/upload/")
+@passengers_poi_bp.post("/api/upload/")
 def upload_passenger_poi_route():
     return upload_passenger_poi(request)
 
