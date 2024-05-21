@@ -1,14 +1,12 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, current_app
 import time
 import uuid
-from app.config import Config
 
 from app.utils.custom_exception import PASSENGERS_POI_NOT_FOUND, MIMETYPE_NOT_SUPPORTED
 from app.services.passenger_poi_fetch import get_passenger_poi
 from app.services.passenger_poi_upload import upload_passenger_poi
 
 passengers_poi_bp = Blueprint('passengers_poi', __name__)
-logger = Config.logger
 
 # Routers
 @passengers_poi_bp.get("/api/fetch/<bucketName>/<fileName>/")
@@ -35,7 +33,7 @@ def error_response(errorDetails):
         "dateTime": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.localtime()),
         "transactionId": str(uuid.uuid4())
     }
-    logger.error(error_response)
+    current_app.logger.error(error_response)
     return error_response
 
 @passengers_poi_bp.errorhandler(Exception)

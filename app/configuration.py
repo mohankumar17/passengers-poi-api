@@ -1,5 +1,4 @@
 import yaml
-import logging
 
 class Config:
     with open("config/dev.yaml") as config_file:
@@ -14,6 +13,3 @@ class Config:
 
     IBM_OAUTH_URL = properties["ibm"]["OAuth"]["url"]
     IBM_OAUTH_APIKEY = properties["ibm"]["OAuth"]["apiKey"]
-
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)

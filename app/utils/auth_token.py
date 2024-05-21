@@ -1,4 +1,4 @@
-from app.config import Config
+from flask import current_app
 from datetime import datetime, timedelta
 from urllib.parse import urlencode
 import os
@@ -12,10 +12,10 @@ def get_auth_token():
     if expiry_time is not None and str(current_time) < expiry_time:
         return os.environ.get("ACCESS_TOKEN")
 
-    url = Config.IBM_OAUTH_URL
+    url = current_app.config.get("IBM_OAUTH_URL")
     body = urlencode({
         "grant_type": "urn:ibm:params:oauth:grant-type:apikey",
-        "apikey": Config.IBM_OAUTH_APIKEY
+        "apikey": current_app.config.get("IBM_OAUTH_APIKEY")
     })
 
     res = requests.post(url=url, data=body)

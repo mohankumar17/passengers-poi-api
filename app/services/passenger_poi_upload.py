@@ -1,4 +1,4 @@
-from app.config import Config
+from flask import current_app
 import requests
 from time import localtime, strftime
 import base64
@@ -20,10 +20,10 @@ def upload_passenger_poi(request):
     body = base64.b64decode(document)
     access_token = get_auth_token()
 
-    url = f"{Config.IBM_COS_HOST}{Config.IBM_COS_BASEPATH}/{bucketName}/{fileName}"
+    url = f'{current_app.config.get("IBM_COS_HOST")}{current_app.config.get("IBM_COS_BASEPATH")}/{bucketName}/{fileName}'
     headers = {
         "Authorization": f"Bearer {access_token}",
-        "ibm-service-instance-id": Config.IBM_COS_INSTANCEID
+        "ibm-service-instance-id": current_app.config.get("IBM_COS_INSTANCEID")
     }
 
     res = requests.put(url=url, data=body, headers=headers)
